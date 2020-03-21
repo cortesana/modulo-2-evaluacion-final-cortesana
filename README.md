@@ -51,8 +51,7 @@ Criterios de evaluación
 Vamos a listar los criterios de evaluación de este ejercicio. Si no superas al menos el 80% de estos criterios o
 no has superado algún criterio clave (marcados con *) te pediremos que realices una re-evaluación con el fin de que termines el curso mejor preparada y enfrentes tu primera experiencia profesional con más seguridad. En caso contrario, estás aprendiendo al ritmo que hemos pautado para poder afrontar los conocimientos del siguiente módulo.
 General
-Usar una estructura adecuada de ficheros y carpetas para un proyecto web, y enlazar bien los distintos
-* ficheros .
+* Usar una estructura adecuada de ficheros y carpetas para un proyecto web, y enlazar bien los distintos ficheros .
 * Tener el código perfectamente indentado .
 Uso de control de versiones con ramas para manejar un proyecto de código. JavaScript básico
 * Crear código JavaScript con sintaxis correcta y bien estructurado .
