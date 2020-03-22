@@ -7,16 +7,6 @@ const baseURL = 'http://api.tvmaze.com/search/shows?q=';
 const ulElem = document.querySelector('#ulElem');
 let contentList = [];
 
-function getInfo() {
-    ulElem.innerHTML = '';
-    fetch(`${baseURL}`+ titleInput)
-        .then(response => response.json())
-        .then(data => {
-            contentList = data;
-            displayInfo(contentList);
-        })
-}
-
 function displayInfo(contentList) {
     for (let i = 0; i < contentList.length; i++) {
         if(contentList[i].show.image !== null) {
@@ -26,5 +16,16 @@ function displayInfo(contentList) {
         }
     }
 }
-    
+
+function getInfo() {
+    ulElem.innerHTML = '';
+    fetch(`${baseURL}${titleInput}`)
+        .then(response => response.json())
+        .then(data => {
+            contentList = data;
+            displayInfo(contentList);
+        })
+}
+/* searchBtn.addEventListener('click', getInfo); */
+
 getInfo();
