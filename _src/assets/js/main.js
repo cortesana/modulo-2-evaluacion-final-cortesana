@@ -1,27 +1,15 @@
 'use strict';
 
 const searchForm = document.querySelector('#searchForm');
-const titleInputValue = document.querySelector('#titleInput.value');
-const titleInput = document.querySelector('#titleInput');
+const inputSearchBar = document.querySelector('#titleInput');
 const searchBtn = document.querySelector('#searchBtn');
-const baseURL = 'http://api.tvmaze.com/search/shows?q=';
 const ulElem = document.querySelector('#ulElem');
+const baseURL = 'http://api.tvmaze.com/search/shows?q=';
 let contentList = [];
-const contentTitle = document.querySelector('#contentTitle');
 
-function displayInfo(contentList) {
-    for (let i = 0; i < contentList.length; i++) {
-        if(contentList[i].show.image !== null) {
-            ulElem.innerHTML += `<li><img src='${contentList[i].show.image.medium}' alt="Content cover"><h2 id="contentTitle">${contentList[i].show.name}</h2></li>`;
-        } else {
-            ulElem.innerHTML += `<li><img src='https://via.placeholder.com/210x295/ffffff/666666/?text=TV' alt="Content cover"><h2 id="contentTitle">${contentList[i].show.name}</h2></li>`;
-        }
-    }
-}
 
 function getInfo() {
-    ulElem.innerHTML = '';
-    fetch(`${baseURL}${titleInputValue}`)
+    fetch(baseURL+inputSearchBar.value)
         .then(response => response.json())
         .then(data => {
             contentList = data;
@@ -29,20 +17,16 @@ function getInfo() {
         })
 }
 
-function searchingContentTitle() {
-    let item;
-    let rmCaseSensitive;
-    rmCaseSensitive = titleInputValue.toUpperCase();
-    for (let i = 0; i < contentTitle.lenght; i++) {
-        item = contentTitle[i];
-        txtValue = item.textContent || item.innerText;
-        if (titleInputValue.toUpperCase().indexOf(rmCaseSensitive) > -1) {
-            contentTitle[i].style.display = "inline-block";
+function displayInfo(contentList) {
+    ulElem.innerHTML = '';
+    for(let item of contentList){
+        alert('hola');
+        if(item.show.image === null) {
+            ulElem.innerHTML += `<li id=${item.show.id}><img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV"><h2 id="tvShowTitle">${item.show.name}</h2></li>`
         } else {
-            contentTitle[i].style.display = "none";
+            ulElem.innerHTML += `<li id=${item.show.id}><img src=${item.show.image.medium}><h2 id="tvShowTitle">${item.show.name}</h2></li>`
         }
     }
 }
 
-getInfo();
-titleInput.addEventListener('onkeyup', searchBar);
+searchBtn.addEventListener('click', getInfo);
