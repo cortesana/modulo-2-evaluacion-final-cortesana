@@ -6,7 +6,7 @@ const ulElem = document.querySelector('#ulElem');
 const favouritesList = document.querySelector('.favouritesList');
 const baseURL = 'http://api.tvmaze.com/search/shows?q=';
 let contentList = [];
-let selectedFavourites = readLocalStorage();
+/* let selectedFavourites = readLocalStorage(); */
 
 function getInfo() {
     fetch(baseURL+inputSearchBar.value)
