@@ -37,17 +37,17 @@ function addListenersToTVShows() {
     }
 }
 
-function addToFavourites(event) {
+function addToFavourites() {
     event.currentTarget.classList.add('colorFavourites');
     const currentFavourite = event.currentTarget.id;
-    
     const favouriteObj = getId(currentFavourite);
     if(selectedFavourites.indexOf(currentFavourite) !== -1){
         alert('This film has already been added to favourites');
+    
     } else {
         selectedFavourites.push(favouriteObj.show);
         setLocalStorage();
-        printFavourites(selectedFavourites)
+        printFavourites(selectedFavourites);
     }
 }
 
@@ -73,13 +73,13 @@ function printFavourites(arrayFav){
     favouritesList.innerHTML = '';
     for(let favouriteItem of arrayFav){
         favouritesList.innerHTML+= `<li class ="FavouriteListItem" id=${favouriteItem.id}><img src=${favouriteItem.image.medium}><button type="button" class="rmBtn">Delete</button><h3 class="titleFavourite">${favouriteItem.name}</h3></li>`
-        addRemoveListeners();
+        listenerRmFromFavourites();
     }
     
 }
 searchBtn.addEventListener('click', getInfo);
 
-function addRemoveListeners(){
+function listenerRmFromFavourites(){
     const rmFavouritesButton = document.querySelectorAll('.rmBtn')
     for(let btnItem of rmFavouritesButton){
         btnItem.addEventListener('click', removeFavourite);
