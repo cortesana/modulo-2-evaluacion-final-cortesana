@@ -30,3 +30,4 @@ function displayInfo(array) {
 }
 
 searchBtn.addEventListener('click', getInfo);
+
